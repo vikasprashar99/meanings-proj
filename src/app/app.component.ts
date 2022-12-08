@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +8,9 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class AppComponent {
   title = 'y';
+
+  // goToTest = {
+  //     this.router.navigateByUrl('/user');
+
+  // }
 }
