@@ -15,6 +15,11 @@ export class QuizComponent implements OnInit {
   resArr: any = [];
 
   ngOnInit(): void {
+//     var a = [];
+// for (var i=0, t=40; i<t; i++) {
+//     a.push(Math.round(Math.random() * t))
+// }
+// console.log(a);
     const arr = DATA_CONST.PDF1;
     arr.forEach((ele: any) => {
       const res = ele.replaceAll(/[0-9.]/g, '');
