@@ -13,16 +13,16 @@ export class QuizComponent implements OnInit {
   favoriteSeason: string | undefined;
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
+  tempArr : any = [];
+  // getRandomItem(ra: string | any[]) {
+  //   // get random index value
+  //   const randomIndex = Math.floor(Math.random() * ra.length);
 
-  getRandomItem(ra: string | any[]) {
-    // get random index value
-    const randomIndex = Math.floor(Math.random() * ra.length);
+  //   // get random item
+  //   const item = ra[randomIndex];
 
-    // get random item
-    const item = ra[randomIndex];
-
-    return item;
-  }
+  //   return item;
+  // }
 
   ngOnInit(): void {
     const arr = DATA_CONST.PDF1;
@@ -39,10 +39,13 @@ export class QuizComponent implements OnInit {
     });
 
     this.resArr.forEach((element: any) => {
-      const r1 = this.getRandomItem(this.resArr);
-      const r2 = this.getRandomItem(this.resArr);
-      const r3 = this.getRandomItem(this.resArr);
-      const arr = [element.val, r1.val, r2.val, r3.val];
+      let randomNumber = Math.floor(Math.random() * this.resArr.length);
+      this.tempArr = this.resArr.filter((x:any)=> x.val !== element.val)
+      const r1 = (this.tempArr[(this.tempArr.length+randomNumber-1)%this.tempArr.length]);
+      const r2 = (this.tempArr[(this.tempArr.length+randomNumber)%this.tempArr.length]);
+      const r3 = (this.tempArr[(this.tempArr.length+randomNumber+1)%this.tempArr.length]);
+
+     const arr = [element.val, r1.val, r2.val, r3.val];
       element.options = this.shuffle(arr);
     });
   }
