@@ -1,12 +1,7 @@
 .example-spacer {
     flex: 1 1 auto;
   }
-  .app-toolbar {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 0; /* Sets the sticky toolbar to be on top */
-    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
-}
+
   .example-radio-group {
     display: flex;
     flex-direction: column;
@@ -17,4 +12,26 @@
   .example-radio-button {
     margin: 5px;
   }
+  
+
+  .header {
+    height: 200px;
+    width: 100%;
+  }
+
+.secondToolbar {
+  position: fixed;
+  top: 0;
+  height: 0;
+  opacity: 0;
+  cursor: default;
+  user-select: none;
+}
+
+.sticky {
+height: 64px;
+opacity: 1;
+z-index: 10;
+}
+
   
