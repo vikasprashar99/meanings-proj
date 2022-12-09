@@ -35,6 +35,7 @@ export class QuizComponent implements OnInit {
         val: newRes[newRes.length - 1],
       };
       this.resArr.push(obj);
+      this.shuffle(this.resArr)
     });
 
     this.resArr.forEach((element: any) => {
@@ -53,7 +54,7 @@ export class QuizComponent implements OnInit {
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
       // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
+      randomIndex = Math.floor(Math.random() * currentIndex+1);
       currentIndex--;
 
       // And swap it with the current element.
@@ -64,6 +65,7 @@ export class QuizComponent implements OnInit {
     }
 
     return array;
+    
   }
   goToDashboard() {
     this.router.navigate(['/']);
