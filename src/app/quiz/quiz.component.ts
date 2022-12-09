@@ -14,26 +14,17 @@ export class QuizComponent implements OnInit {
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
 
+  getRandomItem(ra: string | any[]) {
+    // get random index value
+    const randomIndex = Math.floor(Math.random() * ra.length);
+
+    // get random item
+    const item = ra[randomIndex];
+
+    return item;
+  }
+
   ngOnInit(): void {
-
-
-// function getRandomItem(ra: string | any[]) {
-
-//   // get random index value
-//   const randomIndex = Math.floor(Math.random() * ra.length);
-
-//   // get random item
-//   const item = ra[randomIndex];
-
-//   return item;
-// }
-
-// const array = [1, 'hello', 5, 8];
-
-// const result = getRandomItem(array);
-// console.log(result);
-
-
     const arr = DATA_CONST.PDF1;
     arr.forEach((ele: any) => {
       const res = ele.replaceAll(/[0-9.]/g, '');
@@ -45,8 +36,35 @@ export class QuizComponent implements OnInit {
       };
       this.resArr.push(obj);
     });
+
+    this.resArr.forEach((element: any) => {
+      const r1 = this.getRandomItem(this.resArr);
+      const r2 = this.getRandomItem(this.resArr);
+      const r3 = this.getRandomItem(this.resArr);
+      const arr = [element.val, r1.val, r2.val, r3.val];
+      element.options = this.shuffle(arr);
+    });
   }
 
+  shuffle(array: any) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
   goToDashboard() {
     this.router.navigate(['/']);
   }

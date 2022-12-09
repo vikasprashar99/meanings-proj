@@ -19,10 +19,13 @@
       class="example-radio-group"
       [(ngModel)]="favoriteSeason"
     >
-      <mat-radio-button class="example-radio-button">
-        {{ data.val }}
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let newOptions of data.options"
+      >
+        {{ newOptions }}
       </mat-radio-button>
     </mat-radio-group>
     <div>Your favorite season is: {{ favoriteSeason }}</div>
   </mat-card>
-  </div>
+</div>
