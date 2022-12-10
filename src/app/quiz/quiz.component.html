@@ -22,6 +22,7 @@
         class="example-radio-button"
         *ngFor="let newOptions of data.options"
         [value]="newOptions"
+        (change)="onChangeRadio($event, i)"
       >
         {{ newOptions }}
       </mat-radio-button>

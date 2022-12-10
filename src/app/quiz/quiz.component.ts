@@ -13,7 +13,7 @@ export class QuizComponent implements OnInit {
   favoriteSeason: string | undefined;
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
-  tempArr : any = [];
+  tempArr: any = [];
   // getRandomItem(ra: string | any[]) {
   //   // get random index value
   //   const randomIndex = Math.floor(Math.random() * ra.length);
@@ -33,19 +33,29 @@ export class QuizComponent implements OnInit {
       const obj = {
         key: firstRes[0],
         val: newRes[newRes.length - 1],
+        givenAns: '',
       };
       this.resArr.push(obj);
-      this.shuffle(this.resArr)
+      this.shuffle(this.resArr);
     });
 
     this.resArr.forEach((element: any) => {
       let randomNumber = Math.floor(Math.random() * this.resArr.length);
-      this.tempArr = this.resArr.filter((x:any)=> x.val !== element.val)
-      const r1 = (this.tempArr[(this.tempArr.length+randomNumber-1)%this.tempArr.length]);
-      const r2 = (this.tempArr[(this.tempArr.length+randomNumber)%this.tempArr.length]);
-      const r3 = (this.tempArr[(this.tempArr.length+randomNumber+1)%this.tempArr.length]);
+      this.tempArr = this.resArr.filter((x: any) => x.val !== element.val);
+      const r1 =
+        this.tempArr[
+          (this.tempArr.length + randomNumber - 1) % this.tempArr.length
+        ];
+      const r2 =
+        this.tempArr[
+          (this.tempArr.length + randomNumber) % this.tempArr.length
+        ];
+      const r3 =
+        this.tempArr[
+          (this.tempArr.length + randomNumber + 1) % this.tempArr.length
+        ];
 
-     const arr = [element.val, r1.val, r2.val, r3.val];
+      const arr = [element.val, r1.val, r2.val, r3.val];
       element.options = this.shuffle(arr);
     });
   }
@@ -68,9 +78,11 @@ export class QuizComponent implements OnInit {
     }
 
     return array;
-    
   }
   goToDashboard() {
     this.router.navigate(['/']);
+  }
+  onChangeRadio(event: any, index: number) {
+    this.resArr[index].givenAns = event.value;
   }
 }
