@@ -85,4 +85,16 @@ export class QuizComponent implements OnInit {
   onChangeRadio(event: any, index: number) {
     this.resArr[index].givenAns = event.value;
   }
+
+  onSubmit(){
+    let count = 0;
+    console.log(this.resArr)
+    this.resArr.forEach((element: any) => {
+      if (element.givenAns == element.val){
+        count ++;
+
+      }
+    })
+    console.log(count,"/",this.resArr.length)
+  }
 }
