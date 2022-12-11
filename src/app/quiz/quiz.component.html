@@ -19,12 +19,13 @@
       class="example-radio-group"
     >
       <mat-radio-button
-        class="example-radio-button"
+        style="margin: 5px"
+        class="{{ newOptions.class }}"
         *ngFor="let newOptions of data.options"
-        [value]="newOptions"
+        [value]="newOptions.value"
         (change)="onChangeRadio($event, i)"
       >
-        {{ newOptions }}
+        {{ newOptions.value }}
       </mat-radio-button>
     </mat-radio-group>
     <!-- <div>Your favorite season is: {{ favoriteSeason }}</div> -->

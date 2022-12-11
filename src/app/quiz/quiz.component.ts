@@ -55,7 +55,24 @@ export class QuizComponent implements OnInit {
           (this.tempArr.length + randomNumber + 1) % this.tempArr.length
         ];
 
-      const arr = [element.val, r1.val, r2.val, r3.val];
+      const arr = [
+        {
+          value: element.val,
+          class: '',
+        },
+        {
+          value: r1.val,
+          class: '',
+        },
+        {
+          value: r2.val,
+          class: '',
+        },
+        {
+          value: r3.val,
+          class: '',
+        },
+      ];
       element.options = this.shuffle(arr);
     });
   }
@@ -86,15 +103,25 @@ export class QuizComponent implements OnInit {
     this.resArr[index].givenAns = event.value;
   }
 
-  onSubmit(){
+  onSubmit() {
     let count = 0;
-    console.log(this.resArr)
     this.resArr.forEach((element: any) => {
-      if (element.givenAns == element.val){
-        count ++;
-
+      if (element.givenAns == element.val) {
+        count++;
+        this.handleOptionCss(element.options, element.val);
+      } else {
+        this.handleOptionCss(element.options, element.val);
       }
-    })
-    console.log(count,"/",this.resArr.length)
+    });
+  }
+
+  private handleOptionCss(options: [], correctAns: string) {
+    options.forEach((op: { value: any; class: string }) => {
+      if (op.value === correctAns) {
+        op.class = 'c1';
+      } else {
+        op.class = 'c2';
+      }
+    });
   }
 }
