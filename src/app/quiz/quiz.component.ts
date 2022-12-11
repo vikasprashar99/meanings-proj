@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DATA_CONST } from '../data_const';
+import { ResultmodalComponent } from '../resultmodal/resultmodal.component';
 
 @Component({
   selector: 'app-quiz',
@@ -8,21 +10,12 @@ import { DATA_CONST } from '../data_const';
   styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router,private dialog: MatDialog) {}
 
   favoriteSeason: string | undefined;
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
   tempArr: any = [];
-  // getRandomItem(ra: string | any[]) {
-  //   // get random index value
-  //   const randomIndex = Math.floor(Math.random() * ra.length);
-
-  //   // get random item
-  //   const item = ra[randomIndex];
-
-  //   return item;
-  // }
 
   ngOnInit(): void {
     const arr = DATA_CONST.PDF1;
@@ -112,6 +105,23 @@ export class QuizComponent implements OnInit {
       } else {
         this.handleOptionCss(element.options, element.val);
       }
+      let dialogConfig = new MatDialogConfig();
+      // dialogConfig.disableClose = true;
+      // dialogConfig.autoFocus = true;
+      
+    //   dialogConfig.data = {
+    //     id: count,
+    //     title: this.resArr.length
+    // };
+        // this.dialog.open(ResultmodalComponent, dialogConfig);
+        dialogConfig = this.dialog.open(ResultmodalComponent, {
+          width: '230px',
+          height: '200px',
+          data: {
+            score: count,
+            total: this.resArr.length
+          }
+        })
     });
   }
 

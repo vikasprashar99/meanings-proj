@@ -11,10 +11,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
-import { FormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ResultmodalComponent } from './resultmodal/resultmodal.component';
 
 @NgModule({
-  declarations: [AppComponent, QuizComponent, DashboardComponent],
+  declarations: [AppComponent, QuizComponent, DashboardComponent, ResultmodalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,7 +26,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatCheckboxModule,
     MatRadioModule,
-    FormsModule
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
