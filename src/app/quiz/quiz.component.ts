@@ -105,24 +105,26 @@ export class QuizComponent implements OnInit {
       } else {
         this.handleOptionCss(element.options, element.val);
       }
-      let dialogConfig = new MatDialogConfig();
-      // dialogConfig.disableClose = true;
-      // dialogConfig.autoFocus = true;
-      
-    //   dialogConfig.data = {
-    //     id: count,
-    //     title: this.resArr.length
-    // };
-        // this.dialog.open(ResultmodalComponent, dialogConfig);
-        dialogConfig = this.dialog.open(ResultmodalComponent, {
-          width: '230px',
-          height: '200px',
-          data: {
-            score: count,
-            total: this.resArr.length
-          }
-        })
     });
+    // alert("You Score" +count+ " out of" +this.resArr.length)
+    
+    let dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    
+  //   dialogConfig.data = {
+  //     id: count,
+  //     title: this.resArr.length
+  // };
+      this.dialog.open(ResultmodalComponent, dialogConfig);
+      dialogConfig = this.dialog.open(ResultmodalComponent, {
+        width: '230px',
+        height: '200px',
+        data: {
+          score: count,
+          total: this.resArr.length
+        }
+      })
   }
 
   private handleOptionCss(options: [], correctAns: string) {
