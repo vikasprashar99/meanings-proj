@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DATA_CONST } from '../data_const';
+import { ResultmodalComponent } from '../resultmodal/resultmodal.component';
 
 @Component({
   selector: 'app-quiz',
@@ -8,23 +10,18 @@ import { DATA_CONST } from '../data_const';
   styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   favoriteSeason: string | undefined;
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
   tempArr: any = [];
-  // getRandomItem(ra: string | any[]) {
-  //   // get random index value
-  //   const randomIndex = Math.floor(Math.random() * ra.length);
-
-  //   // get random item
-  //   const item = ra[randomIndex];
-
-  //   return item;
-  // }
 
   ngOnInit(): void {
+    this.getQuestions();
+  }
+
+  getQuestions() {
     const arr = DATA_CONST.PDF1;
     arr.forEach((ele: any) => {
       const res = ele.replaceAll(/[0-9.]/g, '');
@@ -75,6 +72,13 @@ export class QuizComponent implements OnInit {
       ];
       element.options = this.shuffle(arr);
     });
+
+    // handling 6 random unique objects
+    this.resArr = this.getrandomitems(this.resArr);
+  }
+
+  getrandomitems(list: any[]) {
+    return [...list].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 6);
   }
 
   shuffle(array: any) {
@@ -96,6 +100,11 @@ export class QuizComponent implements OnInit {
 
     return array;
   }
+
+  onClickRefresh() {
+    this.getQuestions();
+    // this.resArr = this.getrandomitems(this.resArr);
+  }
   goToDashboard() {
     this.router.navigate(['/']);
   }
@@ -112,6 +121,25 @@ export class QuizComponent implements OnInit {
       } else {
         this.handleOptionCss(element.options, element.val);
       }
+    });
+    // alert("You Score" +count+ " out of" +this.resArr.length)
+
+    let dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+
+    //   dialogConfig.data = {
+    //     id: count,
+    //     title: this.resArr.length
+    // };
+    this.dialog.open(ResultmodalComponent, dialogConfig);
+    dialogConfig = this.dialog.open(ResultmodalComponent, {
+      width: '230px',
+      height: '200px',
+      data: {
+        score: count,
+        total: this.resArr.length,
+      },
     });
   }
 
