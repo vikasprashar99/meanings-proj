@@ -14,7 +14,6 @@ export class ResultmodalComponent implements OnInit {
   constructor( public dialogRef: MatDialogRef<ResultmodalComponent>,   @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    console.log(this.data.score)
     console.log(this.data.total)
      this.score = this.data.score;
      this.total = this.data.total;
@@ -22,7 +21,6 @@ export class ResultmodalComponent implements OnInit {
   
 
 close() {
-  console.log("i am inside the close modal")
     this.dialogRef.close();
     
 }

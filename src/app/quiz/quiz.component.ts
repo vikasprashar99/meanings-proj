@@ -78,7 +78,7 @@ export class QuizComponent implements OnInit {
   }
 
   getrandomitems(list: any[]) {
-    return [...list].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 6);
+    return [...list].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 25);
   }
 
   shuffle(array: any) {
