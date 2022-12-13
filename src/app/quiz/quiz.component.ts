@@ -10,7 +10,7 @@ import { ResultmodalComponent } from '../resultmodal/resultmodal.component';
   styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent implements OnInit {
-  constructor(private router: Router,private dialog: MatDialog) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   favoriteSeason: string | undefined;
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
@@ -18,6 +18,10 @@ export class QuizComponent implements OnInit {
   tempArr: any = [];
 
   ngOnInit(): void {
+    this.getQuestions();
+  }
+
+  getQuestions() {
     const arr = DATA_CONST.PDF1;
     arr.forEach((ele: any) => {
       const res = ele.replaceAll(/[0-9.]/g, '');
@@ -68,6 +72,13 @@ export class QuizComponent implements OnInit {
       ];
       element.options = this.shuffle(arr);
     });
+
+    // handling 6 random unique objects
+    this.resArr = this.getrandomitems(this.resArr);
+  }
+
+  getrandomitems(list: any[]) {
+    return [...list].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 6);
   }
 
   shuffle(array: any) {
@@ -89,6 +100,11 @@ export class QuizComponent implements OnInit {
 
     return array;
   }
+
+  onClickRefresh() {
+    this.getQuestions();
+    // this.resArr = this.getrandomitems(this.resArr);
+  }
   goToDashboard() {
     this.router.navigate(['/']);
   }
@@ -107,24 +123,24 @@ export class QuizComponent implements OnInit {
       }
     });
     // alert("You Score" +count+ " out of" +this.resArr.length)
-    
+
     let dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     // dialogConfig.autoFocus = true;
-    
-  //   dialogConfig.data = {
-  //     id: count,
-  //     title: this.resArr.length
-  // };
-      this.dialog.open(ResultmodalComponent, dialogConfig);
-      dialogConfig = this.dialog.open(ResultmodalComponent, {
-        width: '230px',
-        height: '200px',
-        data: {
-          score: count,
-          total: this.resArr.length
-        }
-      })
+
+    //   dialogConfig.data = {
+    //     id: count,
+    //     title: this.resArr.length
+    // };
+    this.dialog.open(ResultmodalComponent, dialogConfig);
+    dialogConfig = this.dialog.open(ResultmodalComponent, {
+      width: '230px',
+      height: '200px',
+      data: {
+        score: count,
+        total: this.resArr.length,
+      },
+    });
   }
 
   private handleOptionCss(options: [], correctAns: string) {

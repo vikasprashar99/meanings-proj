@@ -8,9 +8,17 @@
   </button>
   <span>IDIOMS AND PHRASES</span>
   <span class="example-spacer"></span>
-  <button mat-raised-button style="margin-right: 5px;" color="accent" (click)="onSubmit()">Submit</button>
-  <button mat-raised-button color="accent">Refresh</button>
-
+  <button
+    mat-raised-button
+    style="margin-right: 5px"
+    color="accent"
+    (click)="onSubmit()"
+  >
+    Submit
+  </button>
+  <button mat-raised-button color="accent" (click)="onClickRefresh()">
+    Refresh
+  </button>
 </mat-toolbar>
 
 <div style="padding-top: 5%">
