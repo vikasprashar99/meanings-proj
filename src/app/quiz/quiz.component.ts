@@ -16,12 +16,13 @@ export class QuizComponent implements OnInit {
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
   tempArr: any = [];
+  dataArr: any =[];
 
   ngOnInit(): void {
-    this.getQuestions();
+    this.getQuestions(25);
   }
 
-  getQuestions() {
+  getQuestions(value=25) {
     const arr = DATA_CONST.PDF1;
     arr.forEach((ele: any) => {
       const res = ele.replaceAll(/[0-9.]/g, '');
@@ -74,11 +75,16 @@ export class QuizComponent implements OnInit {
     });
 
     // handling 6 random unique objects
-    this.resArr = this.getrandomitems(this.resArr);
+    this.resArr = this.getrandomitems(this.resArr,value);
   }
 
-  getrandomitems(list: any[]) {
-    return [...list].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 25);
+  getrandomitems(list: any[],value=25) {
+    return [...list].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, value);
+  }
+
+  selectionChange(event:any){
+      this.getrandomitems(this.dataArr, event.value)
+      this.getQuestions(event.value);
   }
 
   shuffle(array: any) {

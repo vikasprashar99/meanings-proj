@@ -16,9 +16,18 @@
   >
     Submit
   </button>
-  <button mat-raised-button color="accent" (click)="onClickRefresh()">
+  <!-- <button mat-raised-button color="accent" (click)="onClickRefresh()">
     Refresh
-  </button>
+  </button> -->
+  <div style="font-size: 14px">
+  <mat-form-field appearance="fill" >
+    <mat-label>Refresh (25Q)</mat-label>
+    <mat-select (selectionChange)="selectionChange($event)">
+      <mat-option value="35">35 question</mat-option>
+      <mat-option value="50">50 question</mat-option>
+    </mat-select>
+    </mat-form-field>
+    </div>
 </mat-toolbar>
 
 <div style="padding-top: 5%">
