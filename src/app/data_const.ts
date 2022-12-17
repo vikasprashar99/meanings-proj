@@ -1105,4 +1105,9 @@ export const DATA_CONST = {
     '1156. BEAT A DEAD HORSE To uselessly dwell on a subject far beyond its point of resolution\u093f\u0941 \u0926\u0947\u093f\u0947\u0902\u091c\u093e\u0928 \u0921\u093e\u0932\u0928\u0947\u0915\u0940 \u0915\u094b\u092e\u0936\u0936 \u0915\u0930\u0928\u093e',
     '1157. ON TENTERHOOKS In anxious suspense \u0927\u091a\u0902\u0928\u0924\u0924 \u0939\u094b\u0928\u093e',
   ],
+  PDF2: [
+    '1. INTREPID - Resolutely fearless / dauntless / - FEARLESS',
+    '2. ABROGATE - Repeal or do away with (a law, right, or formal agreement) / - REPEAL',
+    '19. DILIGENT - Having or showing care and conscientiousness in one"s work or duties / भेहनती - INDUSTRIOUS',
+  ],
 };

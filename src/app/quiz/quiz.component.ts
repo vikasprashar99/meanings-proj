@@ -16,16 +16,21 @@ export class QuizComponent implements OnInit {
   seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
   tempArr: any = [];
-  dataArr: any =[];
+  dataArr: any = [];
 
   ngOnInit(): void {
     this.getQuestions(25);
   }
 
-  getQuestions(value=25) {
-    const arr = DATA_CONST.PDF1;
+  getQuestions(value = 25) {
+    let arr: string[] = [];
+    if (this.router.url.split('/')[2] === 'PDF1') {
+      arr = DATA_CONST.PDF1;
+    } else if (this.router.url.split('/')[2] === 'PDF2') {
+      arr = DATA_CONST.PDF2;
+    }
     arr.forEach((ele: any) => {
-      const res = ele.replaceAll(/[0-9.]/g, '');
+      const res = ele.replaceAll(/[0-9-.]/g, '');
       const firstRes = res.split(/[A-Z][a-z]/g);
       const newRes = res.split(/[A-Z]+\s/g);
       const obj = {
@@ -75,16 +80,16 @@ export class QuizComponent implements OnInit {
     });
 
     // handling 6 random unique objects
-    this.resArr = this.getrandomitems(this.resArr,value);
+    this.resArr = this.getrandomitems(this.resArr, value);
   }
 
-  getrandomitems(list: any[],value=25) {
+  getrandomitems(list: any[], value = 25) {
     return [...list].sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, value);
   }
 
-  selectionChange(event:any){
-      this.getrandomitems(this.dataArr, event.value)
-      this.getQuestions(event.value);
+  selectionChange(event: any) {
+    this.getrandomitems(this.dataArr, event.value);
+    this.getQuestions(event.value);
   }
 
   shuffle(array: any) {
