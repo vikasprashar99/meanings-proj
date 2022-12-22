@@ -33,12 +33,14 @@ export class QuizComponent implements OnInit {
       const res = ele.replaceAll(/[0-9-.]/g, '');
       const firstRes = res.split(/[A-Z][a-z]/g);
       const newRes = res.split(/[A-Z]+\s/g);
+      console.log(res,"+",firstRes,"+",newRes)
       const obj = {
         key: firstRes[0],
         val: newRes[newRes.length - 1],
         givenAns: '',
       };
       this.resArr.push(obj);
+      console.log(this.resArr)
       this.shuffle(this.resArr);
     });
 
