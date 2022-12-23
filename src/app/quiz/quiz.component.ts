@@ -12,8 +12,6 @@ import { ResultmodalComponent } from '../resultmodal/resultmodal.component';
 export class QuizComponent implements OnInit {
   constructor(private router: Router, private dialog: MatDialog) {}
 
-  favoriteSeason: string | undefined;
-  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   resArr: any = [];
   tempArr: any = [];
   dataArr: any = [];
@@ -26,23 +24,31 @@ export class QuizComponent implements OnInit {
     let arr: string[] = [];
     if (this.router.url.split('/')[2] === 'PDF1') {
       arr = DATA_CONST.PDF1;
+      arr.forEach((ele: any) => {
+        const res = ele.replaceAll(/[0-9-.]/g, '');
+        const firstRes = res.split(/[A-Z][a-z]/g);
+        const newRes = res.split(/[A-Z]+\s/g);
+        const obj = {
+          key: firstRes[0],
+          val: newRes[newRes.length - 1],
+          givenAns: '',
+        };
+        this.resArr.push(obj);
+        this.shuffle(this.resArr);
+      });
     } else if (this.router.url.split('/')[2] === 'PDF2') {
       arr = DATA_CONST.PDF2;
+      arr.forEach((ele: any) => {
+        const firstRes = ele.split('-');
+        const obj = {
+          key: firstRes[0].replaceAll(/[0-9-.]/g, ''),
+          val: firstRes[1] + firstRes[2],
+          givenAns: '',
+        };
+        this.resArr.push(obj);
+        this.shuffle(this.resArr);
+      });
     }
-    arr.forEach((ele: any) => {
-      const res = ele.replaceAll(/[0-9-.]/g, '');
-      const firstRes = res.split(/[A-Z][a-z]/g);
-      const newRes = res.split(/[A-Z]+\s/g);
-      console.log(res,"+",firstRes,"+",newRes)
-      const obj = {
-        key: firstRes[0],
-        val: newRes[newRes.length - 1],
-        givenAns: '',
-      };
-      this.resArr.push(obj);
-      console.log(this.resArr)
-      this.shuffle(this.resArr);
-    });
 
     this.resArr.forEach((element: any) => {
       let randomNumber = Math.floor(Math.random() * this.resArr.length);
