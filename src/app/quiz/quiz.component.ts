@@ -151,7 +151,6 @@ export class QuizComponent implements OnInit {
     //     id: count,
     //     title: this.resArr.length
     // };
-    this.dialog.open(ResultmodalComponent, dialogConfig);
     dialogConfig = this.dialog.open(ResultmodalComponent, {
       width: '230px',
       height: '200px',
