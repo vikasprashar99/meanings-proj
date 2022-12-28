@@ -179,9 +179,10 @@ export class QuizComponent implements OnInit {
     options.forEach((op: { value: any; class: string }) => {
       if (op.value === correctAns) {
         op.class = 'c1';
-      } else {
-        op.class = 'c2';
-      }
+      } 
+      // else {
+      //   op.class = 'c2';
+      // }
     });
   }
 }

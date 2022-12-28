@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="secondToolbar" [ngClass]="{ sticky: true }">
+<mat-toolbar color="primary" class="secondToolbar" [ngClass]="{ sticky: true }" style="display: flex;">
   <button
     mat-icon-button
     class="example-icon"
@@ -31,7 +31,7 @@
     </div>
 </mat-toolbar>
 
-<div style="padding-top: 5%">
+<div class="topclass">
   <mat-card *ngFor="let data of resArr; let i = index" [attr.data-index]="i">
     <mat-card-content>{{ i + 1 }} {{ data.key }}</mat-card-content>
     <mat-radio-group

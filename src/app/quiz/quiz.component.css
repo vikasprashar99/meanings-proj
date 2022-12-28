@@ -43,3 +43,12 @@ z-index: 10;
 .mat-card-content{
   word-wrap: break-word;
 }
+.topclass{
+  padding-top: 5%;
+}
+/* npm run build ,, firebase deploy */
+@media only screen and (max-width: 600px) {
+  .topclass {
+    padding-top: 14%;
+  }
+}
