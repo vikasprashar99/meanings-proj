@@ -17,5 +17,8 @@ export class DashboardComponent implements OnInit {
     } else if (pdfName === 'PDF2') {
       this.router.navigate(['quiztest/PDF2']);
     }
+    else if (pdfName === 'PDF3') {
+      this.router.navigate(['quiztest/PDF3']);
+    }
   }
 }

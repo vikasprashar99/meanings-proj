@@ -36,8 +36,22 @@ export class QuizComponent implements OnInit {
         this.resArr.push(obj);
         this.shuffle(this.resArr);
       });
-    } else if (this.router.url.split('/')[2] === 'PDF2') {
+    } else if (this.router.url.split('/')[2] === 'PDF2' ) {
       arr = DATA_CONST.PDF2;
+      arr.forEach((ele: any) => {
+        const firstRes = ele.split('-');
+        const obj = {
+          key: firstRes[0].replaceAll(/[0-9-.]/g, ''),
+          val: firstRes[1] + firstRes[2],
+          givenAns: '',
+        };
+        this.resArr.push(obj);
+        this.shuffle(this.resArr);
+      });
+    }
+
+    else if (this.router.url.split('/')[2] === 'PDF3' ) {
+      arr = DATA_CONST.PDF3;
       arr.forEach((ele: any) => {
         const firstRes = ele.split('-');
         const obj = {
