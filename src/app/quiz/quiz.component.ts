@@ -15,6 +15,7 @@ export class QuizComponent implements OnInit {
   resArr: any = [];
   tempArr: any = [];
   dataArr: any = [];
+  headerName: string = '';
 
   ngOnInit(): void {
     this.getQuestions(25);
@@ -36,7 +37,8 @@ export class QuizComponent implements OnInit {
         this.resArr.push(obj);
         this.shuffle(this.resArr);
       });
-    } else if (this.router.url.split('/')[2] === 'PDF2' ) {
+      this.headerName = 'IDIOMS';
+    } else if (this.router.url.split('/')[2] === 'PDF2') {
       arr = DATA_CONST.PDF2;
       arr.forEach((ele: any) => {
         const firstRes = ele.split('-');
@@ -48,9 +50,8 @@ export class QuizComponent implements OnInit {
         this.resArr.push(obj);
         this.shuffle(this.resArr);
       });
-    }
-
-    else if (this.router.url.split('/')[2] === 'PDF3' ) {
+      this.headerName = 'SYNONYM';
+    } else if (this.router.url.split('/')[2] === 'PDF3') {
       arr = DATA_CONST.PDF3;
       arr.forEach((ele: any) => {
         const firstRes = ele.split('-');
@@ -62,6 +63,7 @@ export class QuizComponent implements OnInit {
         this.resArr.push(obj);
         this.shuffle(this.resArr);
       });
+      this.headerName = 'ANONTONYM';
     }
 
     this.resArr.forEach((element: any) => {
@@ -179,7 +181,7 @@ export class QuizComponent implements OnInit {
     options.forEach((op: { value: any; class: string }) => {
       if (op.value === correctAns) {
         op.class = 'c1';
-      } 
+      }
       // else {
       //   op.class = 'c2';
       // }

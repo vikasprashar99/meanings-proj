@@ -1,4 +1,9 @@
-<mat-toolbar color="primary" class="secondToolbar" [ngClass]="{ sticky: true }" style="display: flex;">
+<mat-toolbar
+  color="primary"
+  class="secondToolbar"
+  [ngClass]="{ sticky: true }"
+  style="display: flex"
+>
   <button
     mat-icon-button
     class="example-icon"
@@ -6,7 +11,7 @@
   >
     <mat-icon (click)="goToDashboard()">arrow_back</mat-icon>
   </button>
-  <span style="font-size: 12px;">IDIOMS AND PHRASES</span>
+  <span style="font-size: 15px">{{ headerName }}</span>
   <span class="example-spacer"></span>
   <button
     mat-raised-button
@@ -19,16 +24,16 @@
   <!-- <button mat-raised-button color="accent" (click)="onClickRefresh()">
     Refresh
   </button> -->
-  <div style="font-size: 14px;">
-  <mat-form-field appearance="fill"  >
-    <mat-label style="width: 10px;">Refresh </mat-label>
-    <mat-select (selectionChange)="selectionChange($event)" >
-      <mat-option value="25">25 question</mat-option>
-      <mat-option value="35">35 question</mat-option>
-      <mat-option value="50">50 question</mat-option>
-    </mat-select>
+  <div style="font-size: 14px">
+    <mat-form-field appearance="fill">
+      <mat-label style="width: 10px">Refresh </mat-label>
+      <mat-select (selectionChange)="selectionChange($event)">
+        <mat-option value="25">25 question</mat-option>
+        <mat-option value="35">35 question</mat-option>
+        <mat-option value="50">50 question</mat-option>
+      </mat-select>
     </mat-form-field>
-    </div>
+  </div>
 </mat-toolbar>
 
 <div class="topclass">

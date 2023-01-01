@@ -45,6 +45,7 @@ z-index: 10;
 }
 .topclass{
   padding-top: 5%;
+  width: auto;
 }
 /* npm run build ,, firebase deploy */
 @media only screen and (max-width: 600px) {
@@ -54,10 +55,15 @@ z-index: 10;
   .mat-radio-label{
     white-space: normal !important;
   }
-  .mat-radio-label-content{
+
+  :host ::ng-deep .mat-radio-label-content{
     white-space: normal !important;
+}
+:host ::ng-deep .mat-form-field-infix{
+  width: 100px;
 }
   /* #mat-select-0-panel{
     bottom: 0 !important;
   } */
+  
 }
