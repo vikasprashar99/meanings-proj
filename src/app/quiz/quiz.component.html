@@ -6,7 +6,7 @@
   >
     <mat-icon (click)="goToDashboard()">arrow_back</mat-icon>
   </button>
-  <span>IDIOMS AND PHRASES</span>
+  <span style="font-size: 12px;">IDIOMS AND PHRASES</span>
   <span class="example-spacer"></span>
   <button
     mat-raised-button
@@ -19,10 +19,10 @@
   <!-- <button mat-raised-button color="accent" (click)="onClickRefresh()">
     Refresh
   </button> -->
-  <div style="font-size: 14px">
-  <mat-form-field appearance="fill" >
-    <mat-label>Refresh </mat-label>
-    <mat-select (selectionChange)="selectionChange($event)">
+  <div style="font-size: 14px;">
+  <mat-form-field appearance="fill"  >
+    <mat-label style="width: 10px;">Refresh </mat-label>
+    <mat-select (selectionChange)="selectionChange($event)" >
       <mat-option value="25">25 question</mat-option>
       <mat-option value="35">35 question</mat-option>
       <mat-option value="50">50 question</mat-option>

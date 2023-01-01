@@ -51,4 +51,13 @@ z-index: 10;
   .topclass {
     padding-top: 14%;
   }
+  .mat-radio-label{
+    white-space: normal !important;
+  }
+  .mat-radio-label-content{
+    white-space: normal !important;
+}
+  /* #mat-select-0-panel{
+    bottom: 0 !important;
+  } */
 }
